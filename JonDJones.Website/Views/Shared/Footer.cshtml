@@ -1,0 +1,15 @@
+﻿@using JonDJones.Website.Core.Entities
+@model JonDJones.Website.Interfaces.IPageViewModel<JonDJones.Website.Core.Pages.Base.GlobalBasePage>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p class="copyright text-muted">
+                    @Model.Layout.FooterProperties.Current.CopyRightNotice
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

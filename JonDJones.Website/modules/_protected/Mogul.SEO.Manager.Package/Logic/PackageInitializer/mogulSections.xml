@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<Mogul>
+  <UrlRewriter InvalidCharsRegexPattern="[ /\\]" ReplacementChar="-" InvalidCharsToRemoveRegexPattern="[\?&amp;#:*&quot;&lt;&gt;|,+?]">
+    <!-- Add -->
+    <ignoreurl>
+      <!-- Note: The url that will match the url will be ToLower() before check is run. -->
+      <!--<add url="/" /> Note: Should not be used when using alternate language URLs. -->
+      <add url="/mogulseomanagersitemap.aspx"/>
+      <add url="/mogulseomanagermobilesitemap.aspx"/>
+    </ignoreurl>
+    <ignorepattern>
+      <!-- Note: The url that will match the pattern will ignore case when IsMatch is run. -->
+      <add name="ICOFiles" pattern="\.ico(\?.*)?$" />
+      <add name="AxdFiles" pattern="\.axd(\?.*)?$" />
+      <add name="CSSFiles" pattern="\.css(\?.*)?$" />
+      <add name="PNGFiles" pattern="\.png(\?.*)?$" />
+      <add name="JPGFiles" pattern="\.jpg(\?.*)?$" />
+      <add name="GIFFiles" pattern="\.gif(\?.*)?$" />
+      <add name="JSFiles"  pattern="\.js(\?.*)?$" />
+      <add name="SWFFiles" pattern="\.swf(\?.*)?$" />
+    </ignorepattern>
+  </UrlRewriter>
+  <Global UseAlternateLanguageUrls="true" FileNotFound="/MogulSeoManagerPageNotFound.aspx" FileGone="/MogulSeoManagerPageGone.aspx" RegExUrlPatternCacheTimeout="600" CacheSiteUrlsTimeout="120" CacheVirtualPathTimeoutInSeconds="3600" RewriteUrlCacheTimeout="10" />
+</Mogul>

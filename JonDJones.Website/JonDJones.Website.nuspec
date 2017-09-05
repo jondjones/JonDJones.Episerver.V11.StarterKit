@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>JonDJones</id>
+        <version>0.1.0.0</version>
+        <authors>JonDJones</authors>
+        <owners>JonDJones</owners>
+        <projectUrl>http://JonDJones.com</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>JonDJones</description>
+        <releaseNotes />
+    </metadata>
+  <files>
+    <file src="**\*.*" exclude="**\*.cs" />
+	<file src="**\*.*" exclude="**\*.csproj*" />
+  </files>
+</package>

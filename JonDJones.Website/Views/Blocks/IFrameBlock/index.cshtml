@@ -1,0 +1,6 @@
+﻿@model JonDJones.Website.Core.ViewModel.Blocks.IFrameBlockViewModel
+
+<div class="@Model.GetBootstrapClass()">
+    <iframe id="childFrame" scrolling="no" src="@Model.LinkUrl" style="border: 0;"></iframe>
+</div>
+<script type="text/javascript" src="/assets/js/PostMessagingResponsiveSetup.js"></script>

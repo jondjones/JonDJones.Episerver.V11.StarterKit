@@ -1,0 +1,31 @@
+﻿@using EPiServer
+@using EPiServer.ServiceLocation
+@using EPiServer.Web.Mvc.Html
+@using JonDJones.Website.Core.EpiserverConfiguration.Media
+@using JonDJones.Website.Shared.Resources
+
+@model EPiServer.Core.ContentReference
+@{
+    var contentRepository = ServiceLocator.Current.GetInstance<IContentRepository>();
+    ImageFile image = null;
+    var cssClass = string.Empty;
+    var altText = string.Empty;
+    var title = string.Empty;
+    var height = string.Empty;
+    var width = string.Empty;
+
+    if (Model != null)
+    {
+        image = contentRepository.Get<ImageFile>(Model);
+        cssClass = ViewData[GlobalConstants.ViewDataProperties.CssClassName] != null ? ViewData[GlobalConstants.ViewDataProperties.CssClassName].ToString() : string.Empty;
+        altText = image.AlternativeText ?? string.Empty;
+        title = image.Title ?? altText;
+        width = image.DisplayWidth != 0 ? image.DisplayWidth.ToString() : string.Empty;
+        height = image.DisplayHeight != 0 ? image.DisplayHeight.ToString() : string.Empty;
+    }
+}
+
+@if (image != null)
+{
+    <img src='@Url.ContentUrl(Model)' class="@cssClass" alt='@altText' title="@title" width="@width" height="@height" />
+}

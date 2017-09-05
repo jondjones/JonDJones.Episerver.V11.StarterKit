@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Award1AlternateTextDefault" xml:space="preserve">
+    <value>Online personal wealth awards 2016 - Best stockbroker - Winner</value>
+  </data>
+  <data name="AwardAlternateTextDefault" xml:space="preserve">
+    <value>ADVFN awards 2016 - Best online stockbroker - Winner</value>
+  </data>
+  <data name="AwardsLabelDefault" xml:space="preserve">
+    <value>Our latest awards</value>
+  </data>
+  <data name="FacebookLableDefault" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="FacebookLinkDefault" xml:space="preserve">
+    <value>https://www.facebook.com/pages/The-Share-Centre/173067242723283?ref=hl</value>
+  </data>
+  <data name="DataTableEndPointDomain" xml:space="preserve">
+    <value>https://api-dt.development.local</value>
+  </data>
+  <data name="FooterTextDefault" xml:space="preserve">
+    <value>The Share Centre Limited is a member of the London Stock Exchange and is authorised and regulated by the Financial Conduct Authority and is entered in the register under reference 146768. Registered office: Oxford House, Oxford Road, Aylesbury, Buckinghamshire, HP21 8SZ. Registered in England no. 2461949. VAT registration no. 596 3918 82.</value>
+  </data>
+  <data name="HideHubText" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Log4NetDefaultConfiguration" xml:space="preserve">
+    <value>&lt;log4net&gt;
+  &lt;appender name="errorFileLogAppender" type="log4net.Appender.RollingFileAppender" &gt;
+    &lt;!-- Consider moving the log files to a location outside the web application --&gt;
+    &lt;file value="C:\EpiServer10Resources\TheShareCentre\VPP\Logs\EPiServerErrors.log" /&gt;
+    &lt;encoding value="utf-8" /&gt;
+    &lt;staticLogFileName value="true"/&gt;
+    &lt;datePattern value=".yyyyMMdd.'log'" /&gt;
+    &lt;rollingStyle value="Date" /&gt;
+    &lt;threshold value="Error" /&gt;
+    &lt;lockingModel type="log4net.Appender.FileAppender+MinimalLock" /&gt;
+    &lt;appendToFile value="true" /&gt;
+    &lt;layout type="log4net.Layout.PatternLayout"&gt;
+      &lt;conversionPattern value="%date [%thread] %level %logger: %message%n" /&gt;
+    &lt;/layout&gt;
+  &lt;/appender&gt;
+  &lt;appender name="SqlAppender" type="log4net.Appender.ADONetAppender"&gt;
+    &lt;bufferSize value="1" /&gt;
+    &lt;connectionType value="System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" /&gt;
+    &lt;connectionString value="server=.\SQLEXPRESS; uid=ElmahUser; pwd=31m4hUs3r; database=TscWebsiteLogs" /&gt;
+    &lt;commandText value="INSERT INTO Log4NetLog ([Date],[Hostname],[Thread],[Level],[Logger],[Message],[Exception]) VALUES (@log_date, @hostname, @thread, @log_level, @logger, @message, @exception)" /&gt;
+    &lt;parameter&gt;
+      &lt;parameterName value="@log_date"/&gt;
+      &lt;dbType value="DateTime"/&gt;
+      &lt;layout type="log4net.Layout.RawTimeStampLayout"/&gt;
+    &lt;/parameter&gt;
+    &lt;parameter&gt;
+      &lt;parameterName value="@hostname"/&gt;
+      &lt;dbType value="String"/&gt;
+      &lt;size value="255"/&gt;
+      &lt;layout type="log4net.Layout.PatternLayout"&gt;
+        &lt;conversionPattern value="%property{log4net:HostName}" /&gt;
+      &lt;/layout&gt;
+    &lt;/parameter&gt;
+    &lt;parameter&gt;
+      &lt;parameterName value="@thread"/&gt;
+      &lt;dbType value="String"/&gt;
+      &lt;size value="255"/&gt;
+      &lt;layout type="log4net.Layout.PatternLayout"&gt;
+        &lt;conversionPattern value="%thread"/&gt;
+      &lt;/layout&gt;
+    &lt;/parameter&gt;
+    &lt;parameter&gt;
+      &lt;parameterName value="@log_level"/&gt;
+      &lt;dbType value="String"/&gt;
+      &lt;size value="50"/&gt;
+      &lt;layout type="log4net.Layout.PatternLayout"&gt;
+        &lt;conversionPattern value="%level"/&gt;
+      &lt;/layout&gt;
+    &lt;/parameter&gt;
+    &lt;parameter&gt;
+      &lt;parameterName value="@logger"/&gt;
+      &lt;dbType value="String"/&gt;
+      &lt;size value="255"/&gt;
+      &lt;layout type="log4net.Layout.PatternLayout"&gt;
+        &lt;conversionPattern value="%logger"/&gt;
+      &lt;/layout&gt;
+    &lt;/parameter&gt;
+    &lt;parameter&gt;
+      &lt;parameterName value="@message"/&gt;
+      &lt;dbType value="String"/&gt;
+      &lt;size value="4000"/&gt;
+      &lt;layout type="log4net.Layout.PatternLayout"&gt;
+        &lt;conversionPattern value="%message"/&gt;
+      &lt;/layout&gt;
+    &lt;/parameter&gt;
+    &lt;parameter&gt;
+      &lt;parameterName value="@exception"/&gt;
+      &lt;dbType value="String"/&gt;
+      &lt;size value="2000"/&gt;
+      &lt;layout type="log4net.Layout.ExceptionLayout"/&gt;
+    &lt;/parameter&gt;
+	&lt;filter type="log4net.filter.loggermatchfilter"&gt;
+        &lt;loggertomatch value="episerver" /&gt;
+        &lt;acceptonmatch value="false" /&gt;
+    &lt;/filter&gt;
+  &lt;/appender&gt;
+
+  &lt;!-- Reduce amount of debug logging --&gt;
+  &lt;logger name="EPiServer.Core.OptimisticCache" additivity="false"&gt;
+    &lt;level value="Error" /&gt;
+  &lt;/logger&gt;
+  &lt;logger name="EPiServer.Core.ContentProvider" additivity="false"&gt;
+    &lt;level value="Error" /&gt;
+  &lt;/logger&gt;
+  &lt;logger name="EPiServer.Data.Dynamic.Providers.DbDataStoreProvider" additivity="false"&gt;
+    &lt;level value="Error" /&gt;
+  &lt;/logger&gt;
+  &lt;logger name="EPiServer.Data.Providers.SqlDatabaseHandler" additivity="false"&gt;
+    &lt;level value="Error" /&gt;
+  &lt;/logger&gt;
+  &lt;logger name="EPiServer.Data.Providers.ConnectionContext" additivity="false"&gt;
+    &lt;level value="Error" /&gt;
+  &lt;/logger&gt;
+
+  &lt;root&gt;
+    &lt;!--Be careful, setting this value to All, Debug or Info will affect performance.--&gt;
+    &lt;level value="Error" /&gt;
+
+    &lt;!--Enabled file logging--&gt;
+    &lt;appender-ref ref="errorFileLogAppender" /&gt;
+    &lt;appender-ref ref="SqlAppender" /&gt;
+  &lt;/root&gt;
+
+&lt;/log4net&gt;</value>
+  </data>
+  <data name="LogoAlternateTextDefault" xml:space="preserve">
+    <value>The Share Centre - Simply easier</value>
+  </data>
+  <data name="MobileLogoAlternateTextDefault" xml:space="preserve">
+    <value>The Share Centre</value>
+  </data>
+  <data name="MyAccountLabelDefault" xml:space="preserve">
+    <value>My account</value>
+  </data>
+  <data name="MyAccountUrlDefault" xml:space="preserve">
+    <value>http://accounts.development.local/my-summary/</value>
+  </data>
+  <data name="OpenAccountLabelDefault" xml:space="preserve">
+    <value>Open an account</value>
+  </data>
+  <data name="OpenAccountUrlDefault" xml:space="preserve">
+    <value>http://accounts.development.local/accounts/</value>
+  </data>
+  <data name="ReminderTextDefault" xml:space="preserve">
+    <value>&lt;h4 class="h5"&gt;Please remember&lt;/h4&gt;
+            &lt;p class="mb-0"&gt;
+                This website does not give personal advice based on your circumstances. It provides information and analysis so you can make your own informed investment decisions. The value of investments can fall as well as rise, and you may get back less than you invested. An investment’s past performance is not a reliable indicator of future performance. Tax allowances and the benefits of tax-efficient accounts could change in the future.
+            &lt;/p&gt;</value>
+  </data>
+  <data name="ScreenReaderSearchLabelDefault" xml:space="preserve">
+    <value>Submit search</value>
+  </data>
+  <data name="SearchLabelDefault" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SearchPlaceholderLabelDefault" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="SignInLabelDefault" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="SignInUrlDefault" xml:space="preserve">
+    <value>http://accounts.development.local/login/</value>
+  </data>
+  <data name="SignOutLabelDefault" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="SignOutUrlDefault" xml:space="preserve">
+    <value>http://accounts.development.local/?logout=true</value>
+  </data>
+  <data name="SocialMediaLabelDefault" xml:space="preserve">
+    <value>Stay connected</value>
+  </data>
+  <data name="UsefulLinksText" xml:space="preserve">
+    <value>Useful Links</value>
+  </data>
+  <data name="TableFeedFilterButtonText" xml:space="preserve">
+    <value>Filter table</value>
+  </data>
+  <data name="TableFeedFooterText" xml:space="preserve">
+    <value>Valued at {{time}} on {{date}} using (at least) 15 minute delayed prices.</value>
+  </data>
+  <data name="TableFeedMiniFooterText" xml:space="preserve">
+    <value>Valued at {{time}} on {{date}} using (at least) 15 minute delayed prices.</value>
+  </data>
+  <data name="TableFeedMiniTableDetails" xml:space="preserve">
+    <value>What does this table mean?</value>
+  </data>
+  <data name="TableFeedTableDetails" xml:space="preserve">
+    <value>What does this table mean?</value>
+  </data>
+  <data name="TwitterLabelDefault" xml:space="preserve">
+    <value>Twitter</value>
+  </data>
+  <data name="TwitterLinkDefault" xml:space="preserve">
+    <value>https://twitter.com/TheShareCentre</value>
+  </data>
+</root>
