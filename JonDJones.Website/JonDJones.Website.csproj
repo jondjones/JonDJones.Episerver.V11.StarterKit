@@ -440,7 +440,6 @@
     <Content Include="modules\_protected\CMS\CMS.zip" />
     <Content Include="License.config" />
     <Content Include="Views\Blocks\IFrameBlock\index.cshtml" />
-    <Content Include="modules\TSC.Website.Core\module.config" />
     <Content Include="ClientResources\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="ClientResources\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="ClientResources\fonts\glyphicons-halflings-regular.woff" />
