@@ -174,11 +174,6 @@
     <Compile Include="Fixtures\Pages\SettingsPageFixtures.cs" />
     <Compile Include="Fixtures\Pages\HomePageFixtures.cs" />
     <Compile Include="Helpers\ContentHelper.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Resources\FixtureConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -199,13 +194,6 @@
       <Project>{D147D809-A0D0-4B70-99E0-82B52E086CB2}</Project>
       <Name>JonDJones.Website.Shared</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

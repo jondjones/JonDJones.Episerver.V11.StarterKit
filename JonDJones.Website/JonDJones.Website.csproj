@@ -414,9 +414,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="modules\Geta.SEO.Sitemaps\AdminManageSitemap.aspx" />
     <Content Include="modules\POSSIBLE.RobotsTxtHandler\Views\RobotsTxtAdmin\Index.aspx" />
-    <Content Include="modules\TSC.Website.Core\ClientResources\Scripts\Editors\ExtendedCollectionEditor.js" />
-    <Content Include="modules\TSC.Website.Core\ClientResources\Scripts\Editors\extendedFormatters.js" />
-    <Content Include="modules\TSC.Website.Core\ClientResources\Scripts\Editors\PropertyStringList.js" />
     <Content Include="modules\_protected\EPiServer.TinyMCESpellChecker\web.config" />
     <Content Include="modules\_protected\EPiServer.TinyMCESpellChecker\module.config" />
     <Content Include="modules\_protected\EPiServer.TinyMCESpellChecker\EPiServer.TinyMCESpellChecker.zip" />
