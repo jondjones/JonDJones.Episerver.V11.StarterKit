@@ -1,4 +1,9 @@
-﻿namespace JonDJones.Fixtures.Helpers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JonDJones.Fixtures.Helpers
 {
     using JonDJones.Fixtures.Fixtures.Factory;
     using JonDJones.Website.Shared.Helpers;
@@ -12,10 +17,46 @@
             Guard.ValidateObject(blockFixturesFactory);
             _blockFixturesFactory = blockFixturesFactory;
         }
+        public static string LoremIpsum(
+            int minWords,
+            int maxWords,
+            int minSentences,
+            int maxSentences,
+            int numParagraphs)
+        {
+            var loremIpsumWords = new List<string>
+            {
+                "lorem", "ipsum", "dolor", "sit", "amet", "consectetuer",
+                "adipiscing", "elit", "sed", "diam", "nonummy", "nibh", "euismod",
+                "tincidunt", "ut", "laoreet", "dolore", "magna", "aliquam", "erat"
+            };
 
-        public static string LoremIpsum =>
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+            var rand = new Random();
+            var numSentences = rand.Next(maxSentences - minSentences) + minSentences + 1;
+            var numWords = rand.Next(maxWords - minWords) + minWords + 1;
 
-        public static string LoremIpsumShort => "Lorem Ipsum is simply dummy";
+            var result = new StringBuilder();
+
+            for (var paragraphs = 0; paragraphs < numParagraphs; paragraphs++)
+            {
+                result.Append("<p>");
+
+                for (var sentences = 0; sentences < numSentences; sentences++)
+                {
+                    for (var words = 0; words < numWords; words++)
+                    {
+                        var randomSentance = string.Join(" ", loremIpsumWords.OrderBy(x => rand.Next()));
+                        result.Append(randomSentance);
+                    }
+
+                    result.Append(". ");
+                }
+
+                result.Append("</p>");
+            }
+
+            return result.ToString();
+        }
+
     }
 }
