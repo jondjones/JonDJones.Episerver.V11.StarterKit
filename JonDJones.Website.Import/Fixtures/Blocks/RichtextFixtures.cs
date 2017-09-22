@@ -42,7 +42,7 @@
 
         public ContentReference CreateDummyRichTextBlock()
         {
-            return CreateRichTextBlock(ContentReference.GlobalBlockFolder, "Dummy Rich Text Block", ContentHelper.LoremIpsum);
+            return CreateRichTextBlock(ContentReference.GlobalBlockFolder, "Dummy Rich Text Block", ContentHelper.LoremIpsum(5, 10, 5, 10, 3));
         }
     }
 }

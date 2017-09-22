@@ -95,6 +95,7 @@
     <Compile Include="Repository\StartPageRepositoryTests.cs" />
     <Compile Include="ViewModels\Base\BaseBlockModelTests.cs" />
     <Compile Include="ViewModels\Base\BaseViewModelTests.cs" />
+    <Compile Include="ViewModels\Blocks\IFrameBlockViewModelTest.cs" />
     <Compile Include="ViewModels\Factory\HeaderViewModelFactoryTests.cs" />
     <Compile Include="ViewModels\Factory\LayoutViewModelFactoryTests.cs" />
     <Compile Include="Dependencies\WebsiteDependenciesTests.cs" />
@@ -111,19 +112,19 @@
   <ItemGroup>
     <ProjectReference Include="..\JonDJones.Website.Core\JonDJones.Website.Core.csproj">
       <Project>{a8dbbdfe-a36b-4c01-ab98-ac949c33138a}</Project>
-      <Name>TSC.Website.Core</Name>
+      <Name>JonDJones.Website.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\JonDJones.Website.Interfaces\JonDJones.Website.Interfaces.csproj">
       <Project>{bc14c76a-8804-4263-8685-4a487d60b53e}</Project>
-      <Name>TSC.Website.Interfaces</Name>
+      <Name>JonDJones.Website.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\JonDJones.Website.Shared\JonDJones.Website.Shared.csproj">
       <Project>{D147D809-A0D0-4B70-99E0-82B52E086CB2}</Project>
-      <Name>TSC.Website.Shared</Name>
+      <Name>JonDJones.Website.Shared</Name>
     </ProjectReference>
     <ProjectReference Include="..\JonDJones.Website.TestShared\JonDJones.Website.TestShared.csproj">
       <Project>{1553ecc8-cb4e-447d-9b42-560f992ea04a}</Project>
-      <Name>TSC.Website.TestShared</Name>
+      <Name>JonDJones.Website.TestShared</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -131,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="ViewModels\Blocks\" />
     <Folder Include="ViewModels\Pages\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
