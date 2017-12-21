@@ -1,67 +1,71 @@
-﻿namespace JonDJones.Website.Core.UnitTests.Dependencies.RepositoryDependencies
+﻿using FluentAssertions;
+
+using Moq;
+
+using NUnit.Framework;
+
+using JonDJones.Website.TestShared.Base;
+
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies;
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.UnitTests.Helper;
+
+namespace JonDJones.Website.Core.UnitTests.Dependencies.RepositoryDependencies
 {
-    using FluentAssertions;
-
-    using Moq;
-
-    using NUnit.Framework;
-
-    using JonDJones.Website.TestShared.Base;
-
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies;
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.UnitTests.Helper;
-
     [TestFixture]
     public class When_I_Instantiate_RepositoryDependencies_ : TestBaseClass
     {
-        private EpiserverContentRepositories episerverContentRepositories;
-        
-        private Mock<IMenuPageRepository> menuRepo;
+        private PageTypeServices episerverContentRepositories;
 
-        private Mock<IStartPageRepository> startPageRepo;
+        private Mock<IMenuService> menuRepo;
 
-        private Mock<IKeyValueRepository> keyValueRepository;
+        private Mock<IStartPageService> startPageRepo;
 
-        private Mock<ISiteSettingsPageRepository> siteSettingsPageRepository;
+        private Mock<IKeyValueService> keyValueRepository;
+
+        private Mock<ISiteSettingsService> siteSettingsPageRepository;
+
+        private Mock<IContentPageService> contentPageService;
 
         [SetUp]
         public void SetUp()
         {
-            menuRepo = new Mock<IMenuPageRepository>();
-            startPageRepo = new Mock<IStartPageRepository>();
-            keyValueRepository = new Mock<IKeyValueRepository>();
-            siteSettingsPageRepository = new Mock<ISiteSettingsPageRepository>();
+            menuRepo = new Mock<IMenuService>();
+            startPageRepo = new Mock<IStartPageService>();
+            keyValueRepository = new Mock<IKeyValueService>();
+            siteSettingsPageRepository = new Mock<ISiteSettingsService>();
+            contentPageService = new Mock<IContentPageService>();
 
-            episerverContentRepositories = new EpiserverContentRepositories(
+            episerverContentRepositories = new PageTypeServices(
                 menuRepo.Object,
                 startPageRepo.Object,
                 siteSettingsPageRepository.Object,
-                keyValueRepository.Object);                
+                contentPageService.Object,
+                keyValueRepository.Object);
         }
 
         [Test]
         public void The_Constructor_Should_Not_Accept_Null_Constructor_Arguments()
         {
-            ParameterValidationHelper.ShouldNotAcceptNullConstructorArguments(typeof(EpiserverContentRepositories));
+            ParameterValidationHelper.ShouldNotAcceptNullConstructorArguments(typeof(PageTypeServices));
         }
 
         [Test]
         public void The_Constructor_Must_Throw_An_ArgumentNullException_With_No_Parameters()
         {
-            ParameterValidationHelper.ConstructorMustThrowArgumentNullException(typeof(EpiserverContentRepositories));
+            ParameterValidationHelper.ConstructorMustThrowArgumentNullException(typeof(PageTypeServices));
         }
 
         [Test]
         public void MenuPageRepository_Should_Be_Correctly_Set()
         {
-            episerverContentRepositories.MenuPageRepository.Should().NotBeNull();
+            episerverContentRepositories.MenuService.Should().NotBeNull();
         }
 
         [Test]
         public void StartPageRepository_Should_Be_Correctly_Set()
         {
-            episerverContentRepositories.StartPageRepository.Should().NotBeNull();
+            episerverContentRepositories.StartPageService.Should().NotBeNull();
         }
     }
 }

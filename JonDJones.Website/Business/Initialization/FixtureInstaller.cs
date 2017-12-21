@@ -14,16 +14,18 @@
     {
         internal Injected<IWebsiteDependencies> WebsiteDependencies { get; set; }
 
-        internal Injected<IEpiserverContentRepositories> EpiserverContentRepositories { get; set; }
+        internal Injected<IPageTypeServices> PageTypeServices { get; set; }
+
+        internal Injected<IGlobalAppSettings> GlobalAppSettings { get; set; }
 
         public void Initialize(InitializationEngine context)
         {
-            if (!AppSettings.RunFixtures)
+            if (!GlobalAppSettings.Service.RunFixtures)
             {
                 return;
             }
 
-            var fixturesSetup = new FixturesInstaller(WebsiteDependencies.Service, EpiserverContentRepositories.Service);
+            var fixturesSetup = new FixturesSetup(WebsiteDependencies.Service, PageTypeServices.Service);
             fixturesSetup.SetupWebsite();
         }
 

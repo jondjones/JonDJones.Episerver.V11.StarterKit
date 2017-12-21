@@ -1,21 +1,22 @@
-﻿namespace JonDJones.Fixtures.Fixtures.Base
-{
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.Interfaces;
-    using JonDJones.Website.Shared.Helpers;
+﻿using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Shared.Helpers;
 
+namespace JonDJones.Fixtures.Fixtures.Base
+{
     public class FixtureBase
     {
-        public FixtureBase(IWebsiteDependencies websiteDependencies, IEpiserverContentRepositories episerverContentRepositories)
+        public FixtureBase(IWebsiteDependencies websiteDependencies, IPageTypeServices pagetypeServices)
         {
             Guard.ValidateObject(websiteDependencies);
-            Guard.ValidateObject(episerverContentRepositories);
+            Guard.ValidateObject(pagetypeServices);
+
             WebsiteDependencies = websiteDependencies;
-            EpiserverContentRepositories = episerverContentRepositories;
+            PageTypeServices = pagetypeServices;
         }
 
         public IWebsiteDependencies WebsiteDependencies { get; }
 
-        public IEpiserverContentRepositories EpiserverContentRepositories { get; }
+        public IPageTypeServices PageTypeServices { get; }
     }
 }

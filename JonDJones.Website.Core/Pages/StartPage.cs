@@ -1,7 +1,7 @@
 ﻿namespace JonDJones.Website.Core.Pages
 {
     using System.ComponentModel.DataAnnotations;
-    
+
     using EPiServer.Core;
     using EPiServer.DataAnnotations;
     using EPiServer.Web;
@@ -12,8 +12,8 @@
     using JonDJones.Website.Shared.Resources;
 
     [ContentType(
-        DisplayName = "Start Page", 
-        GUID = "6671aa96-0a1b-4618-88e3-c98e1a78dcb4", 
+        DisplayName = "Start Page",
+        GUID = "6671aa96-0a1b-4618-88e3-c98e1a78dcb4",
         Description = "Start Page",
         GroupName = "Standard")]
     public class StartPage : DefaultContentPageBase, IFooterProperties, IHeaderProperties
@@ -25,8 +25,6 @@
             GroupName = GlobalConstants.TabNames.PageReferences, Order = 300)]
         [AllowedTypes(AllowedTypes = new[] { typeof(SiteSettingsPage) })]
         public virtual PageReference SiteSettingsPage { get; set; }
-
-
 
         [CultureSpecific]
         [UIHint(UIHint.Image)]

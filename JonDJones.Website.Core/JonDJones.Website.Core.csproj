@@ -243,16 +243,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blocks\Base\GlobalBaseBlock.cs" />
+    <Compile Include="Blocks\Common\CallToActionBlock.cs" />
+    <Compile Include="Blocks\Common\ImageBlock.cs" />
     <Compile Include="Blocks\IFrameBlock.cs" />
     <Compile Include="Blocks\RichTextBlock.cs" />
     <Compile Include="Blocks\VideoBlock.cs" />
     <Compile Include="Controllers\Pages\RedirectPageController.cs" />
-    <Compile Include="Dependencies\RepositoryDependencies\Interfaces\IEpiserverContentRepositories.cs" />
-    <Compile Include="Dependencies\RepositoryDependencies\Interfaces\IKeyValueRepository.cs" />
-    <Compile Include="Dependencies\RepositoryDependencies\Interfaces\IMenuPageRepository.cs" />
-    <Compile Include="Dependencies\RepositoryDependencies\Interfaces\ISiteSettingsPageRepository.cs" />
-    <Compile Include="Dependencies\RepositoryDependencies\Interfaces\IStartpageRepository.cs" />
-    <Compile Include="Dependencies\RepositoryDependencies\EpiserverContentRepositories.cs" />
+    <Compile Include="Dependencies\AppSettingsService.cs" />
+    <Compile Include="Services\PageServices\Factory\IPageTypeServices.cs" />
+    <Compile Include="Services\PageServices\Factory\PageTypeServices.cs" />
+    <Compile Include="Services\PageServices\Interfaces\IKeyValueService.cs" />
+    <Compile Include="Services\PageServices\Interfaces\IMenuPageRepository.cs" />
+    <Compile Include="Services\PageServices\Interfaces\IContentPageService.cs" />
     <Compile Include="DependencyResolution\StructuremapMvc.cs" />
     <Compile Include="DependencyResolution\StructuremapWebApi.cs" />
     <Compile Include="Attributes\ImageThumbnailExtenderAttribute.cs" />
@@ -289,6 +291,8 @@
     <Compile Include="EpiserverConfiguration\ContentAreaRenderer\NoDivContentAreaRenderer.cs" />
     <Compile Include="EpiserverConfiguration\ContentAreaHtmlHelpers.cs" />
     <Compile Include="EpiserverConfiguration\Admin\MenuProvider.cs" />
+    <Compile Include="EpiserverConfiguration\ContentCreateMetadataExtender.cs" />
+    <Compile Include="EpiserverConfiguration\HideOnContentCreateAttribute.cs" />
     <Compile Include="EpiserverConfiguration\PropertyList\OrderedListPropertyList.cs" />
     <Compile Include="EpiserverConfiguration\PropertyList\AnchorLinkItemPropertyList.cs" />
     <Compile Include="Extensions\GeneralExtensions.cs" />
@@ -319,14 +323,25 @@
     <Compile Include="Pages\StartPage.cs" />
     <Compile Include="Pages\PageNotFoundPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\KeyValueRepository.cs" />
-    <Compile Include="Repository\MenuPageRepository.cs" />
-    <Compile Include="Repository\SiteSettingsPageRepository.cs" />
-    <Compile Include="Repository\StartPageRepository.cs" />
-    <Compile Include="Resources\AppSettings.cs" />
+    <Compile Include="Services\PageServices\Interfaces\ISiteSettingsService.cs" />
+    <Compile Include="Services\PageServices\Interfaces\IStartPageService.cs" />
+    <Compile Include="Services\PageServices\KeyValueService.cs" />
+    <Compile Include="Services\PageServices\MenuService.cs" />
+    <Compile Include="Services\PageServices\SiteSettingsService.cs" />
+    <Compile Include="Resources\RedisAppSettings.cs" />
+    <Compile Include="Resources\GlobalAppSettings.cs" />
     <Compile Include="Resources\ContentAreaTags.cs" />
     <Compile Include="SelectionFactories\EnumSelectionFactory.cs" />
+    <Compile Include="Services\PageServices\ContentPageService.cs" />
+    <Compile Include="Services\PageServices\StartPageService.cs" />
+    <Compile Include="ViewModel\AdditionalProperties\NoAdditionalProperties.cs" />
+    <Compile Include="ViewModel\Base\PageViewModel.cs" />
+    <Compile Include="ViewModel\Common\CallToActionViewModel.cs" />
+    <Compile Include="ViewModel\Common\ImageViewModel.cs" />
+    <Compile Include="ViewModel\Common\LinkViewModel.cs" />
+    <Compile Include="ViewModel\Factory\CommonBlockViewModelFactory.cs" />
     <Compile Include="ViewModel\Factory\HeaderViewModelFactory.cs" />
+    <Compile Include="ViewModel\Factory\Interfaces\ICommonBlockViewModelFactory.cs" />
     <Compile Include="ViewModel\Factory\Interfaces\IHeaderViewModelFactory.cs" />
     <Compile Include="ViewModel\Factory\LayoutViewModelFactory.cs" />
     <Compile Include="StartUp\StartupConfiguration.cs" />
@@ -337,19 +352,17 @@
     <Compile Include="Validation\Attributes\MaxItemsAttribute.cs" />
     <Compile Include="Validation\Attributes\AllowedInstancesAttribute.cs" />
     <Compile Include="Validation\AllowedInstancesValidator.cs" />
-    <Compile Include="ViewModel\Base\BaseViewModel.cs" />
     <Compile Include="ViewModel\Base\BlockViewModel.cs" />
     <Compile Include="ViewModel\Base\PreviewViewModel.cs" />
     <Compile Include="ViewModel\Blocks\IFrameBlockViewModel.cs" />
     <Compile Include="ViewModel\Blocks\VideoBlockViewModel.cs" />
     <Compile Include="ViewModel\Blocks\RichTextBlockViewModel.cs" />
-    <Compile Include="ViewModel\Pages\ContentPageViewModel.cs" />
-    <Compile Include="ViewModel\Pages\PageNotFoundPageViewModel.cs" />
-    <Compile Include="ViewModel\Pages\StartPageViewModel.cs" />
-    <Compile Include="ViewModel\Shared\HeaderViewModel.cs" />
-    <Compile Include="ViewModel\Shared\FooterViewModel.cs" />
-    <Compile Include="ViewModel\Shared\LayoutViewModel.cs" />
-    <Compile Include="ViewModel\Shared\MetaDataViewModel.cs" />
+    <Compile Include="ViewModel\AdditionalProperties\ContentPageAdditionalPropertiesViewModel.cs" />
+    <Compile Include="ViewModel\AdditionalProperties\Shared\HeaderViewModel.cs" />
+    <Compile Include="ViewModel\AdditionalProperties\Shared\FooterViewModel.cs" />
+    <Compile Include="ViewModel\AdditionalProperties\Shared\LayoutViewModel.cs" />
+    <Compile Include="ViewModel\AdditionalProperties\Shared\MetaDataViewModel.cs" />
+    <Compile Include="ViewModel\AdditionalProperties\StartPageAdditionalProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -366,7 +379,6 @@
   <ItemGroup>
     <Folder Include="Controllers\API\" />
     <Folder Include="Controllers\MVC\" />
-    <Folder Include="EpiserverConfiguration\Attributes\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JonDJones.Website.Interfaces\JonDJones.Website.Interfaces.csproj">

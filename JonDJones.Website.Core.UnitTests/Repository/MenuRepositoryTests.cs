@@ -38,19 +38,19 @@
         [Test]
         public void The_Constructor_Should_Not_Accept_Null_Constructor_Arguments()
         {
-            ParameterValidationHelper.ShouldNotAcceptNullConstructorArguments(typeof(MenuPageRepository));
+            ParameterValidationHelper.ShouldNotAcceptNullConstructorArguments(typeof(MenuService));
         }
 
         [Test]
         public void The_Constructor_Must_Throw_An_ArgumentNullException_With_No_Parameters()
         {
-            ParameterValidationHelper.ConstructorMustThrowArgumentNullException(typeof(MenuPageRepository));
+            ParameterValidationHelper.ConstructorMustThrowArgumentNullException(typeof(MenuService));
         }
 
         [Test, AutoMoqData]
         public void GetMegaNavigationItems_Should_Be_Empty_When_Not_Set(IWebsiteDependencies dependencies)
         {
-            var menuRepository = new MenuPageRepository(dependencies);
+            var menuRepository = new MenuService(dependencies);
             var result = menuRepository.GetMenuItems(null);
 
             result.Should().BeEmpty();
@@ -61,7 +61,7 @@
         {
             var mockStartPage = new Mock<StartPage>();
 
-            var menuRepository = new MenuPageRepository(dependencies);
+            var menuRepository = new MenuService(dependencies);
             var result = menuRepository.GetMenuItems(mockStartPage.Object);
 
             result.Should().BeEmpty();
@@ -71,7 +71,7 @@
         public void GetMegaNavigationItems_Should_Be_Empty_When_No_Menu_Items_Exist(IWebsiteDependencies dependencies, int contentId)
         {
             var mockStartPage = GetStartPage(contentId);
-            var menuRepository = new MenuPageRepository(dependencies);
+            var menuRepository = new MenuService(dependencies);
             var result = menuRepository.GetMenuItems(mockStartPage.Object);
 
             result.Should().BeEmpty();
@@ -83,7 +83,7 @@
             var mockStartPage = GetStartPage(contentId);
             SetupMockData(testUrl);
 
-            var menuRepository = new MenuPageRepository(dependencies.Object);
+            var menuRepository = new MenuService(dependencies.Object);
             var result = menuRepository.GetMenuItems(mockStartPage.Object);
 
             result.Count.Should().Be(1);
@@ -96,7 +96,7 @@
             SetupMockData(testUrl);
             SetupSubMenuItemsMockData(testUrl);
 
-            var menuRepository = new MenuPageRepository(dependencies.Object);
+            var menuRepository = new MenuService(dependencies.Object);
             var result = menuRepository.GetMenuItems(mockStartPage.Object);
 
             result.First().SubMenuItems.Count().Should().Be(1);
@@ -109,7 +109,7 @@
             SetupMockData(testUrl);
             SetupSubMenuItemsMockData(testUrl);
 
-            var menuRepository = new MenuPageRepository(dependencies.Object);
+            var menuRepository = new MenuService(dependencies.Object);
             var results = menuRepository.GetMenuItems(mockStartPage.Object);
 
             var result = results.First();
@@ -120,7 +120,7 @@
         [Test, AutoMoqData]
         public void GetNavigationItems_Should_Return_Null_When_Not_Set(IWebsiteDependencies dependencies)
         {
-            var menuRepository = new MenuPageRepository(dependencies);
+            var menuRepository = new MenuService(dependencies);
             var result = menuRepository.GetNavigationItems(null);
 
             result.Should().BeEmpty();
@@ -131,7 +131,7 @@
         {
             SetupMockData(testUrl);
 
-            var menuRepository = new MenuPageRepository(dependencies.Object);
+            var menuRepository = new MenuService(dependencies.Object);
             var result = menuRepository.GetNavigationItems(pageReference);
 
             result.Count.Should().Be(1);
@@ -142,7 +142,7 @@
         {
             SetupMockData(testUrl);
 
-            var menuRepository = new MenuPageRepository(dependencies.Object);
+            var menuRepository = new MenuService(dependencies.Object);
             var results = menuRepository.GetNavigationItems(pageReference);
 
             var result = results.FirstOrDefault();
@@ -157,7 +157,7 @@
             SetupMockData(testUrl);
             menuPageMock.Setup(x => x.MenuImageUrl).Returns(new ContentReference());
 
-            var menuRepository = new MenuPageRepository(dependencies.Object);
+            var menuRepository = new MenuService(dependencies.Object);
             var results = menuRepository.GetNavigationItems(pageReference);
 
             var result = results.FirstOrDefault();

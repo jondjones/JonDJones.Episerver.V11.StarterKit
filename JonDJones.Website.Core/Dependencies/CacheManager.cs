@@ -8,29 +8,30 @@
 
     using JonDJones.Website.Core.Resources;
     using JonDJones.Website.Interfaces;
+    using JonDJones.Website.Shared.Helpers;
 
     public class CacheManager : ICacheManager
     {
         private static readonly ILog Logger = LogManager.GetLogger("Legacy");
 
-        private static readonly IDatabase Database;
+        private readonly IDatabase Database;
 
-        static CacheManager()
+        public CacheManager(IRedisAppSettings redisAppSettings)
         {
-            var redisHost = AppSettings.Redis.RedisHost;
-            var redisPort = AppSettings.Redis.RedisPort;
-            var useSsl = AppSettings.Redis.RedisUseSSL;
-            var redisPassword = AppSettings.Redis.RedisPassword;
+            Guard.ValidateObject(redisAppSettings);
 
-            var connectionString = $"{redisHost}:{redisPort}";
-
-            if (!string.IsNullOrEmpty(redisPassword))
+            if (redisAppSettings.RedisEnableLogging)
             {
-                connectionString = $"{connectionString},password={redisPassword},ssl={useSsl}";
-            }
+                var connectionString = $"{redisAppSettings.RedisEnableLogging}:{redisAppSettings.RedisPort}";
 
-            var connectionMultiplexer = ConnectionMultiplexer.Connect(connectionString);
-            Database = connectionMultiplexer.GetDatabase();
+                if (!string.IsNullOrEmpty(redisAppSettings.RedisPassword))
+                {
+                    connectionString = $"{connectionString},password={redisAppSettings.RedisPassword},ssl={redisAppSettings.RedisUseSSL}";
+                }
+
+                var connectionMultiplexer = ConnectionMultiplexer.Connect(connectionString);
+                Database = connectionMultiplexer.GetDatabase();
+            }
         }
 
         public void DeleteValue(string key)

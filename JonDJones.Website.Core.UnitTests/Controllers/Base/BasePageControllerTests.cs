@@ -27,10 +27,10 @@
             ServiceLocator.SetLocatorProvider(() => mockS.Object);
 
             var _websiteDependencies = new Mock<IWebsiteDependencies>(MockBehavior.Strict);
-            var episerverContentRepositories = new Mock<IEpiserverContentRepositories>(MockBehavior.Strict);
+            var episerverContentRepositories = new Mock<IPageTypeServices>(MockBehavior.Strict);
 
             mockS.Setup(x => x.GetInstance<IWebsiteDependencies>()).Returns(_websiteDependencies.Object);
-            mockS.Setup(x => x.GetInstance<IEpiserverContentRepositories>()).Returns(episerverContentRepositories.Object);
+            mockS.Setup(x => x.GetInstance<IPageTypeServices>()).Returns(episerverContentRepositories.Object);
         }
 
         [Test]
@@ -44,7 +44,7 @@
         public void EpiserverRepositoryDependencies_Sets_Correctly()
         {
             startPage = new BasePageController<StartPage>();
-            startPage.EpiserverRepositoryDependencies.Should().NotBeNull();
+            startPage.PageServices.Should().NotBeNull();
         }
     }
 }

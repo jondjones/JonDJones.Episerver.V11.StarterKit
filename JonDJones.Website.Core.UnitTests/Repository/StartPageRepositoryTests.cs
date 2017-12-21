@@ -39,19 +39,19 @@
         [Test]
         public void The_Constructor_Should_Not_Accept_Null_Constructor_Arguments()
         {
-            ParameterValidationHelper.ShouldNotAcceptNullConstructorArguments(typeof(StartPageRepository));
+            ParameterValidationHelper.ShouldNotAcceptNullConstructorArguments(typeof(StartPageService));
         }
 
         [Test]
         public void The_Constructor_Must_Throw_An_ArgumentNullException_With_No_Parameters()
         {
-            ParameterValidationHelper.ConstructorMustThrowArgumentNullException(typeof(StartPageRepository));
+            ParameterValidationHelper.ConstructorMustThrowArgumentNullException(typeof(StartPageService));
         }
 
         [Test]
         public void ContentRepository_Save_Shouldnt_Be_Called_If_Modified_Is_False()
         {
-            var startPageRepository = new StartPageRepository(mockContentRepository.Object, mockContextResolver.Object);
+            var startPageRepository = new StartPageService(mockContentRepository.Object, mockContextResolver.Object);
             startPageRepository.Save(mockStartPage.Object);
 
             mockContentRepository.Verify(x => x.Save(It.IsAny<IContent>(), It.IsAny<SaveAction>(), It.IsAny<AccessLevel>()), Times.Never());
@@ -61,7 +61,7 @@
         public void ContentRepository_Save_Should_Be_Called_If_Content_Modified()
         {
             mockContextResolver.Setup(x => x.IsPageModified(It.IsAny<PageData>())).Returns(true);
-            var startPageRepository = new StartPageRepository(mockContentRepository.Object, mockContextResolver.Object);
+            var startPageRepository = new StartPageService(mockContentRepository.Object, mockContextResolver.Object);
             startPageRepository.Save(mockStartPage.Object);
 
             mockContentRepository.Verify(x => x.Save(It.IsAny<IContent>(), It.IsAny<SaveAction>(), It.IsAny<AccessLevel>()));
@@ -73,24 +73,24 @@
             var pageReference = new PageReference(contentId);
             var mockStartPage = new Mock<StartPage>();
             mockContextResolver.Setup(x => x.StartPage).Returns(pageReference);
-            var startPageRepository = new StartPageRepository(mockContentRepository.Object, mockContextResolver.Object);
+            var startPageRepository = new StartPageService(mockContentRepository.Object, mockContextResolver.Object);
 
             mockContentRepository
                 .Setup(x => x.Get<StartPage>(pageReference))
                 .Returns(mockStartPage.Object);
 
-            startPageRepository.StartPage.Should().NotBeNull();
+            startPageRepository.Homepage.Should().NotBeNull();
         }
 
         [Test]
         public void Null_Homepage_Returns_Null()
         {
-            var startPageRepository = new StartPageRepository(mockContentRepository.Object, mockContextResolver.Object);
+            var startPageRepository = new StartPageService(mockContentRepository.Object, mockContextResolver.Object);
             mockContentRepository
                 .Setup(x => x.Get<StartPage>(It.IsAny<ContentReference>()))
                 .Returns((StartPage)null);
 
-            startPageRepository.StartPage.Should().BeNull();
+            startPageRepository.Homepage.Should().BeNull();
         }
     }
 }

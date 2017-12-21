@@ -156,6 +156,8 @@
     <Compile Include="Enums\CollectionListEnum.cs" />
     <Compile Include="Enums\DisplayOptionEnum.cs" />
     <Compile Include="Enums\DisplayOptionTags.cs" />
+    <Compile Include="IAdditionalProperties.cs" />
+    <Compile Include="IAppSettingsService.cs" />
     <Compile Include="IAssetHandler.cs" />
     <Compile Include="IBlockHelper.cs" />
     <Compile Include="IBlockViewModel.cs" />
@@ -163,8 +165,10 @@
     <Compile Include="ICollectionService.cs" />
     <Compile Include="IContainerPage.cs" />
     <Compile Include="IContextResolver.cs" />
+    <Compile Include="IGlobalAppSettings.cs" />
     <Compile Include="IImageSize.cs" />
     <Compile Include="IIsModified.cs" />
+    <Compile Include="IRedisAppSettings.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="IHasImage.cs" />
     <Compile Include="IHeaderMenuProperties.cs" />

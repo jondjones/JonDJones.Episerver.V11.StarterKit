@@ -13,11 +13,12 @@
     using JonDJones.Website.Core.ViewModel.Base;
     using JonDJones.Website.Interfaces;
     using JonDJones.Website.UnitTests.Helper;
+    using JonDJones.Website.Core.ViewModel.Pages;
 
     [TestFixture]
-    public class When_I_Instantiate_BaseViewModel_ : TestBaseClass
+    public class When_I_Instantiate_PageViewModel_ : TestBaseClass
     {
-        private BaseViewModel<StartPage> baseViewModel;
+        private PageViewModel<StartPage, StartPageAdditionalProperties> baseViewModel;
 
         private StartPage startPage;
 
@@ -27,24 +28,19 @@
             startPage = new StartPage();
         }
 
-        [Test]
-        public void The_Constructor_Must_Throw_An_ArgumentNullException_With_No_Parameters()
-        {
-            ParameterValidationHelper.ConstructorMustThrowArgumentNullException(typeof(BaseViewModel<StartPage>));
-        }
-
         [Test, AutoMoqData]
         public void CurrentPage_Should_Be_Set_Correctly(IWebsiteDependencies dependencies)
         {
-            baseViewModel = new BaseViewModel<StartPage>(startPage, dependencies);
+            baseViewModel = new PageViewModel<StartPage, StartPageAdditionalProperties>(startPage, null);
             baseViewModel.CurrentPage.Should().NotBeNull();
         }
 
         [Test, AutoMoqData]
-        public void Dependencies_Should_Be_Set_Correctly(IWebsiteDependencies dependencies)
+        public void AdditionalProperties_Should_Be_Set_Correctly(IWebsiteDependencies dependencies)
         {
-            baseViewModel = new BaseViewModel<StartPage>(startPage, dependencies);
-            baseViewModel.WebsiteDependencies.Should().NotBeNull();
+            var test = new StartPageAdditionalProperties();
+            baseViewModel = new PageViewModel<StartPage, StartPageAdditionalProperties>(startPage, test);
+            baseViewModel.AdditionalProperties.Should().NotBeNull();
         }
     }
 }

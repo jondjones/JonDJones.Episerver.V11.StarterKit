@@ -1,15 +1,15 @@
-﻿namespace JonDJones.Website.Core.Pages
+﻿using System.ComponentModel.DataAnnotations;
+
+using EPiServer.Core;
+using EPiServer.DataAnnotations;
+
+using JonDJones.Website.Core.Pages.Base;
+using JonDJones.Website.Core.Validation.Attributes;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Shared.Resources;
+
+namespace JonDJones.Website.Core.Pages
 {
-    using System.ComponentModel.DataAnnotations;
-
-    using EPiServer.Core;
-    using EPiServer.DataAnnotations;
-
-    using JonDJones.Website.Core.Pages.Base;
-    using JonDJones.Website.Core.Validation.Attributes;
-    using JonDJones.Website.Interfaces;
-    using JonDJones.Website.Shared.Resources;
-
     [Access(Roles = "Administrators")]
     [ContentType(
         DisplayName = "Site Settings Page",
@@ -20,9 +20,9 @@
     public class SiteSettingsPage : ContainerPage, ISiteSettingsProperties
     {
         [Display(
-            Name = "Search Page", 
+            Name = "Search Page",
             Description = "Sets up the search page",
-            GroupName = GlobalConstants.TabNames.PageReferences, 
+            GroupName = GlobalConstants.TabNames.PageReferences,
             Order = 100)]
         [AllowedTypes(AllowedTypes = new[] { typeof(SearchPage) })]
         public virtual PageReference SearchPage { get; set; }

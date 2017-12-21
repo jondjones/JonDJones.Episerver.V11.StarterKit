@@ -1,22 +1,23 @@
-﻿namespace JonDJones.Website.Core.Controllers.Base
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+
+using EPiServer;
+using EPiServer.Core;
+using EPiServer.Framework.DataAnnotations;
+using EPiServer.Framework.Web;
+using EPiServer.Web;
+
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Core.Entities;
+using JonDJones.Website.Core.ViewModel.Base;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Shared.Helpers;
+using JonDJones.Website.Core.Pages;
+using JonDJones.Website.Core.ViewModel.Pages;
+
+namespace JonDJones.Website.Core.Controllers.Base
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web.Mvc;
-
-    using EPiServer;
-    using EPiServer.Core;
-    using EPiServer.Framework.DataAnnotations;
-    using EPiServer.Framework.Web;
-    using EPiServer.Web;
-
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.Core.Entities;
-    using JonDJones.Website.Core.Pages;
-    using JonDJones.Website.Core.ViewModel.Base;
-    using JonDJones.Website.Interfaces;
-    using JonDJones.Website.Shared.Helpers;
-
     [TemplateDescriptor(
         Inherited = true,
         Tags = new[] { RenderingTags.Preview },
@@ -27,32 +28,34 @@
 
         private readonly TemplateResolver _templateResolver;
 
-        private readonly IWebsiteDependencies __websiteDependencies;
+        private readonly IWebsiteDependencies _websiteDependencies;
 
-        private readonly IEpiserverContentRepositories _episerverContentRepositories;
+        private readonly IPageTypeServices _pageTypeServices;
 
         public PreviewController(
             DisplayOptions displayOptions,
             TemplateResolver templateResolver,
-            IWebsiteDependencies _websiteDependencies,
-            IEpiserverContentRepositories episerverContentRepositories)
+            IWebsiteDependencies websiteDependencies,
+            IPageTypeServices pageTypeServices)
         {
-            Guard.ValidateObject(_websiteDependencies);
+            Guard.ValidateObject(websiteDependencies);
             Guard.ValidateObject(displayOptions);
             Guard.ValidateObject(templateResolver);
-            Guard.ValidateObject(episerverContentRepositories);
+            Guard.ValidateObject(pageTypeServices);
 
             _displayOptions = displayOptions;
             _templateResolver = templateResolver;
-            __websiteDependencies = _websiteDependencies;
-            _episerverContentRepositories = episerverContentRepositories;
+            _websiteDependencies = websiteDependencies;
+            _pageTypeServices = pageTypeServices;
         }
 
         public ActionResult Index(IContent currentContent)
         {
-            var startPage = _episerverContentRepositories.StartPageRepository.StartPage;
+            var startPage = _pageTypeServices.StartPageService.Homepage;
+            var startPageAdditionalProperties = _pageTypeServices.StartPageService.GetStartPageAdditionalProperties(startPage);
+
             var supportedAreas = GetSupportedPreviewAreas(currentContent);
-            var viewModel = new PreviewViewModel(startPage, __websiteDependencies, currentContent, supportedAreas);
+            var viewModel = new PreviewViewModel<StartPage, StartPageAdditionalProperties>(startPage, startPageAdditionalProperties, currentContent, supportedAreas);
 
             return View("~/Views/Blocks/Preview.cshtml", viewModel);
         }
@@ -86,7 +89,7 @@
                 ContentLink = contentReference
             };
 
-            var contentArea = __websiteDependencies.ContextResolver.AddContentAreaItem(new ContentArea(), item);
+            var contentArea = _websiteDependencies.ContextResolver.AddContentAreaItem(new ContentArea(), item);
 
             var areaModel = new PreviewArea
             {

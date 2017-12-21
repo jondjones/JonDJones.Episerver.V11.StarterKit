@@ -1,24 +1,24 @@
-﻿@model JonDJones.Website.Core.ViewModel.Base.PreviewViewModel
-@{
-    Layout = "~/Views/Shared/PreviewLayout.cshtml";
-}
-
-@foreach (var area in Model.Areas)
-{
-    if (area.Supported)
-    {
-        @Html.Partial("TemplateHint", string.Format(@Html.Translate("/preview/heading"), Model.PreviewContent.Name, area.AreaName))
-        <div class="row preview clearfix">
-            @Html.DisplayFor(x => area.ContentArea, new { Tag = area.AreaTag })
-        </div>
+﻿@model PreviewViewModel<JonDJones.Website.Core.Pages.StartPage, StartPageAdditionalProperties>
+    @{
+        Layout = "~/Views/Shared/PreviewLayout.cshtml";
     }
-    else
-    {
-        @Html.Partial("TemplateHint", string.Format(@Html.Translate("/preview/norenderer"), Model.PreviewContent.Name, area.AreaName))
-    }
-}
 
-@if (!Model.Areas.Any())
-{
-    @Html.Partial("TemplateHint", string.Format(@Html.Translate("/preview/norendereratall"), Model.PreviewContent.Name))
-}
+    @foreach (var area in Model.Areas)
+    {
+        if (area.Supported)
+        {
+            @Html.Partial("TemplateHint", string.Format(@Html.Translate("/preview/heading"), Model.PreviewContent.Name, area.AreaName))
+            <div class="row preview clearfix">
+                @Html.DisplayFor(x => area.ContentArea, new { Tag = area.AreaTag })
+            </div>
+        }
+        else
+        {
+            @Html.Partial("TemplateHint", string.Format(@Html.Translate("/preview/norenderer"), Model.PreviewContent.Name, area.AreaName))
+        }
+    }
+
+    @if (!Model.Areas.Any())
+    {
+        @Html.Partial("TemplateHint", string.Format(@Html.Translate("/preview/norendereratall"), Model.PreviewContent.Name))
+    }

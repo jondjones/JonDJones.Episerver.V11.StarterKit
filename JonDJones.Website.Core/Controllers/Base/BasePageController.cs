@@ -12,10 +12,10 @@
     {
         private Injected<IWebsiteDependencies> websiteDependenciesService;
 
-        private Injected<IEpiserverContentRepositories> episerverRepositoryDependencies;
+        private Injected<IPageTypeServices> pageServices;
 
         public IWebsiteDependencies WebsiteDependencies => websiteDependenciesService.Service;
 
-        public IEpiserverContentRepositories EpiserverRepositoryDependencies => episerverRepositoryDependencies.Service;
+        public IPageTypeServices PageServices => pageServices.Service;
     }
 }

@@ -8,8 +8,8 @@
 
     public class FixturePageBase : FixtureBase
     {
-        public FixturePageBase(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IContent homepage)
-            : base(_websiteDependencies, episerverContentRepositories)
+        public FixturePageBase(IWebsiteDependencies _websiteDependencies, IPageTypeServices pagetypeServices, IContent homepage)
+            : base(_websiteDependencies, pagetypeServices)
         {
             Guard.ValidateObject(homepage);
             HomepageReference = homepage;

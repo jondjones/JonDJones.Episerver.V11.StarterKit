@@ -17,14 +17,14 @@
 
         private IContentRoute _contentRoute;
 
-        private ISiteSettingsPageRepository _siteSettingsPageRepository;
+        private ISiteSettingsService _siteSettingsPageRepository;
 
         public WebsiteDependencies(
             IContentRepository contentRepository,
             IContextResolver contextResolver,
             ICacheManager cacheManager,
             IAssetHandler assetHandler,
-            ISiteSettingsPageRepository siteSettingsPageRepository)
+            ISiteSettingsService siteSettingsPageRepository)
         {
             Guard.ValidateObject(cacheManager);
             Guard.ValidateObject(contentRepository);

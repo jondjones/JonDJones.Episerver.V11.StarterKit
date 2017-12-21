@@ -1,18 +1,18 @@
-﻿namespace JonDJones.Website.Core.ViewModel.Factory
-{
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.Core.Entities;
-    using JonDJones.Website.Core.Pages;
-    using JonDJones.Website.Core.ViewModel.Factory.Interfaces;
-    using JonDJones.Website.Core.ViewModel.Shared;
-    using JonDJones.Website.Interfaces;
-    using JonDJones.Website.Shared.Helpers;
+﻿using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Core.Entities;
+using JonDJones.Website.Core.Pages;
+using JonDJones.Website.Core.ViewModel.Factory.Interfaces;
+using JonDJones.Website.Core.ViewModel.Shared;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Shared.Helpers;
 
+namespace JonDJones.Website.Core.ViewModel.Factory
+{
     public class HeaderViewModelFactory : IHeaderViewModelFactory
     {
-        private readonly IMenuPageRepository _menuPageRepository;
+        private readonly IMenuService _menuPageRepository;
 
-        public HeaderViewModelFactory( IMenuPageRepository menuPageRepository)
+        public HeaderViewModelFactory( IMenuService menuPageRepository)
         {
             Guard.ValidateObject(menuPageRepository);
             _menuPageRepository = menuPageRepository;

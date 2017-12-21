@@ -32,10 +32,10 @@
             ServiceLocator.SetLocatorProvider(() => mockServiceLocator.Object);
 
             var _websiteDependencies = new Mock<IWebsiteDependencies>(MockBehavior.Strict);
-            var episerverContentRepositories = new Mock<IEpiserverContentRepositories>(MockBehavior.Strict);
+            var episerverContentRepositories = new Mock<IPageTypeServices>(MockBehavior.Strict);
 
             mockServiceLocator.Setup(x => x.GetInstance<IWebsiteDependencies>()).Returns(_websiteDependencies.Object);
-            mockServiceLocator.Setup(x => x.GetInstance<IEpiserverContentRepositories>()).Returns(episerverContentRepositories.Object);
+            mockServiceLocator.Setup(x => x.GetInstance<IPageTypeServices>()).Returns(episerverContentRepositories.Object);
         }
 
         [Test]

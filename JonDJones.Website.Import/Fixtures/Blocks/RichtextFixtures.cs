@@ -14,7 +14,7 @@
 
     public class RichtextFixtures : FixtureBase
     {
-        public RichtextFixtures(IWebsiteDependencies websiteDependencies, IEpiserverContentRepositories episerverContentRepositories)
+        public RichtextFixtures(IWebsiteDependencies websiteDependencies, IPageTypeServices episerverContentRepositories)
             : base(websiteDependencies, episerverContentRepositories)
         {
         }

@@ -1,23 +1,21 @@
-﻿namespace JonDJones.Fixtures.Fixtures.Pages
+﻿using System;
+using System.Linq;
+using System.Web.Hosting;
+
+using EPiServer.Core;
+
+using JonDJones.Fixtures.Entities;
+using JonDJones.Fixtures.Fixtures.Base;
+using JonDJones.Fixtures.Helpers;
+using JonDJones.Fixtures.Resources;
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Core.Pages;
+using JonDJones.Website.Interfaces;
+using JonDJones.Fixtures.Fixtures.Factory;
+using JonDJones.Website.Shared.Helpers;
+
+namespace JonDJones.Fixtures.Fixtures.Pages
 {
-    using System;
-    using System.Linq;
-    using System.Web.Hosting;
-
-    using EPiServer.Core;
-
-    using Factory;
-
-    using JonDJones.Fixtures.Entities;
-    using JonDJones.Fixtures.Fixtures.Base;
-    using JonDJones.Fixtures.Helpers;
-    using JonDJones.Fixtures.Resources;
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.Core.Pages;
-    using JonDJones.Website.Interfaces;
-
-    using Website.Shared.Helpers;
-
     public class HomePageFixtures : FixtureBase
     {
         private readonly BlockFixturesFactory _blockFixturesFactory;
@@ -26,13 +24,14 @@
 
         public HomePageFixtures(
             IWebsiteDependencies websiteDependencies,
-            IEpiserverContentRepositories episerverContentRepositories,
+            IPageTypeServices pagetypeServices,
             BlockFixturesFactory blockFixturesFactory,
             ContentHelper contentHelper)
-            : base(websiteDependencies, episerverContentRepositories)
+            : base(websiteDependencies, pagetypeServices)
         {
             Guard.ValidateObject(blockFixturesFactory);
             Guard.ValidateObject(contentHelper);
+
             _blockFixturesFactory = blockFixturesFactory;
             _contentHelper = contentHelper;
         }
@@ -40,7 +39,7 @@
         public StartPage GetOrCreateBlankHomePage(string pageName)
         {
             var existingPages =
-                EpiserverContentRepositories.StartPageRepository.GetChildren(
+                PageTypeServices.StartPageService.GetChildren(
                     WebsiteDependencies.ContextResolver.RootPage);
 
             if (existingPages != null && existingPages.Any(x => x.Name == pageName))
@@ -49,7 +48,7 @@
             }
 
             var newPage =
-                EpiserverContentRepositories.StartPageRepository.CreateNewEmptyPage(
+                PageTypeServices.StartPageService.CreateNewEmptyPage(
                     WebsiteDependencies.ContextResolver.RootPage);
 
             newPage.Name = pageName;
@@ -58,7 +57,7 @@
             newPage.Keywords = pageName;
             newPage.Description = new XhtmlString(pageName);
 
-            EpiserverContentRepositories.StartPageRepository.Save(newPage);
+            PageTypeServices.StartPageService.Save(newPage);
 
             return newPage;
         }
@@ -81,7 +80,7 @@
             homePage.Logo = logo;
             homePage.MobileLogo = mobileLogo;
 
-            EpiserverContentRepositories.StartPageRepository.Save(homePage);
+            PageTypeServices.StartPageService.Save(homePage);
         }
 
         public StartPage EnsureSettingsAndResourcePagesExist(StartPage startPage, MetadataContainerReferences metadataContainerReferences)
@@ -101,7 +100,7 @@
             var homePage = startPage.CreateWritableClone() as StartPage;
             homePage.SiteSettingsPage = metadataContainerReferences.SettingsPage.PageLink;
 
-            EpiserverContentRepositories.StartPageRepository.Save(homePage);
+            PageTypeServices.StartPageService.Save(homePage);
 
             return homePage;
         }

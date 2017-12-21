@@ -10,7 +10,6 @@
         public ActionResult Index(RedirectPage currentPage)
         {
             var returnLink = currentPage.CustomRedirect ?? currentPage.ParentLink;
-
             return Redirect(WebsiteDependencies.LinkResolver.ResolveUrl(returnLink));
         }
     }

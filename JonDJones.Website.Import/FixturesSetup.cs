@@ -1,26 +1,25 @@
-﻿namespace JonDJones.Fixtures
+﻿using System;
+using System.Web.Security;
+
+using EPiServer.ServiceLocation;
+using EPiServer.Web;
+using log4net;
+
+using JonDJones.Fixtures.Entities;
+using JonDJones.Fixtures.Fixtures.Factory;
+using JonDJones.Fixtures.Helpers;
+using JonDJones.Fixtures.Fixtures.Pages;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Shared.Helpers;
+using JonDJones.Website.Core.Pages;
+using JonDJones.Fixtures.Resources;
+using JonDJones.Website.Core.Pages.MetaPages.Menu;
+using JonDJones.Fixtures.Fixtures;
+
+namespace JonDJones.Fixtures
 {
-    using System;
-    using System.Web.Security;
-
-    using EPiServer.ServiceLocation;
-    using EPiServer.Web;
-    using Fixtures;
-    using Fixtures.Factory;
-    using Fixtures.Pages;
-    using Helpers;
-    using log4net;
-    using Resources;
-
-    using JonDJones.Fixtures.Entities;
-
-    using Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using Website.Core.Pages;
-    using Website.Core.Pages.MetaPages.Menu;
-    using Website.Interfaces;
-    using Website.Shared.Helpers;
-
-    public class FixturesInstaller
+    public class FixturesSetup
     {
         private readonly BlockFixturesFactory _blockFixturesFactory;
 
@@ -28,7 +27,7 @@
 
         private readonly StartPage _homepage;
 
-        private readonly ILog log = LogManager.GetLogger(typeof(FixturesInstaller));
+        private readonly ILog log = LogManager.GetLogger(typeof(FixturesSetup));
 
         private readonly PagesFixturesFactory _pagesFixturesFactory;
 
@@ -40,20 +39,20 @@
 
         private MetadataContainerReferences _metadataContainerReferences;
 
-        public FixturesInstaller(IWebsiteDependencies dependencies, IEpiserverContentRepositories episerverContentRepositories)
+        public FixturesSetup(IWebsiteDependencies dependencies, IPageTypeServices pageTypeServices)
         {
             Guard.ValidateObject(dependencies);
-            Guard.ValidateObject(episerverContentRepositories);
+            Guard.ValidateObject(pageTypeServices);
 
-            _blockFixturesFactory = new BlockFixturesFactory(dependencies, episerverContentRepositories);
+            _blockFixturesFactory = new BlockFixturesFactory(dependencies, pageTypeServices);
             _contentHelper = new ContentHelper(_blockFixturesFactory);
 
-            _homepageFixtures = new HomePageFixtures(dependencies, episerverContentRepositories, _blockFixturesFactory, _contentHelper);
-            _homepage = SetupInitialHomepage(dependencies, episerverContentRepositories);
+            _homepageFixtures = new HomePageFixtures(dependencies, pageTypeServices, _blockFixturesFactory, _contentHelper);
+            _homepage = SetupInitialHomepage(dependencies, pageTypeServices);
 
             _pagesFixturesFactory = new PagesFixturesFactory(
                 dependencies,
-                episerverContentRepositories,
+                pageTypeServices,
                 _homepage,
                 _contentHelper,
                 _blockFixturesFactory);
@@ -77,7 +76,7 @@
 
         private StartPage SetupInitialHomepage(
             IWebsiteDependencies dependencies,
-            IEpiserverContentRepositories episerverContentRepositories)
+            IPageTypeServices episerverContentRepositories)
         {
             var tempHomepage = _homepageFixtures.GetOrCreateBlankHomePage(FixtureConstants.PageNames.HomePage);
 

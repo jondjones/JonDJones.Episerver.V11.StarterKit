@@ -9,19 +9,20 @@
     {
         private readonly IWebsiteDependencies _websiteDependencies;
 
-        private readonly IEpiserverContentRepositories _episerverContentRepositories;
+        private readonly IPageTypeServices _pagetypeServices;
 
-        public BlockFixturesFactory(IWebsiteDependencies websiteDependencies, IEpiserverContentRepositories episerverContentRepositories)
+        public BlockFixturesFactory(IWebsiteDependencies websiteDependencies, IPageTypeServices pagetypeServices)
         {
             Guard.ValidateObject(websiteDependencies);
-            Guard.ValidateObject(episerverContentRepositories);
+            Guard.ValidateObject(pagetypeServices);
+
             _websiteDependencies = websiteDependencies;
-            _episerverContentRepositories = episerverContentRepositories;
+            _pagetypeServices = pagetypeServices;
         }
 
         public RichtextFixtures RichTextFixtures()
         {
-            return new RichtextFixtures(_websiteDependencies, _episerverContentRepositories);
+            return new RichtextFixtures(_websiteDependencies, _pagetypeServices);
         }
     }
 }

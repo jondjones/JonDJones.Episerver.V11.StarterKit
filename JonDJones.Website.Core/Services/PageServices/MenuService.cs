@@ -14,11 +14,11 @@
     using JonDJones.Website.Interfaces;
     using JonDJones.Website.Shared.Helpers;
 
-    public class MenuPageRepository : IMenuPageRepository
+    public class MenuService : IMenuService
     {
         private readonly IWebsiteDependencies _websiteDependencies;
 
-        public MenuPageRepository(IWebsiteDependencies websiteDependencies)
+        public MenuService(IWebsiteDependencies websiteDependencies)
         {
             Guard.ValidateObject(websiteDependencies);
             _websiteDependencies = websiteDependencies;

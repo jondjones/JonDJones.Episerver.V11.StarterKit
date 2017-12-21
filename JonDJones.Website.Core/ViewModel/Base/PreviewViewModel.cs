@@ -1,18 +1,21 @@
-﻿namespace JonDJones.Website.Core.ViewModel.Base
+﻿using System.Collections.Generic;
+
+using EPiServer.Core;
+
+using JonDJones.Website.Core.Entities;
+using JonDJones.Website.Core.Pages;
+using JonDJones.Website.Core.ViewModel.Pages;
+
+namespace JonDJones.Website.Core.ViewModel.Base
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using EPiServer.Core;
-
-    using JonDJones.Website.Core.Entities;
-    using JonDJones.Website.Core.Pages;
-    using JonDJones.Website.Interfaces;
-
-    public class PreviewViewModel : BaseViewModel<StartPage>
+    public class PreviewViewModel<T, IAdditionalProperties> : PageViewModel<StartPage, StartPageAdditionalProperties>
     {
-        public PreviewViewModel(StartPage currentPage, IWebsiteDependencies dependencies, IContent previewContent, IEnumerable<PreviewArea> areas)
-            : base(currentPage, dependencies)
+        public PreviewViewModel(
+            StartPage currentPage,
+            StartPageAdditionalProperties additionalProperties,
+            IContent previewContent,
+            IEnumerable<PreviewArea> areas)
+            : base(currentPage, additionalProperties)
         {
             PreviewContent = previewContent;
             Areas = areas;

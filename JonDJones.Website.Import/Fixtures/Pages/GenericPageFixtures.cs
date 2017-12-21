@@ -14,8 +14,8 @@
 
     public class GenericPageFixtures : FixturePageBase
     {
-        public GenericPageFixtures(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IContent homepage)
-            : base(_websiteDependencies, episerverContentRepositories, homepage)
+        public GenericPageFixtures(IWebsiteDependencies _websiteDependencies, IPageTypeServices pagetypeServices, IContent homepage)
+            : base(_websiteDependencies, pagetypeServices, homepage)
         {
         }
 

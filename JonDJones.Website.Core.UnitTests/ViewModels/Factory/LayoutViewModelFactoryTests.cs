@@ -31,7 +31,7 @@
 
         private Mock<SiteSettingsPage> mockSiteSettingsPage;
 
-        private Mock<IEpiserverContentRepositories> mockEpiserverContentRepositories;
+        private Mock<IPageTypeServices> mockEpiserverContentRepositories;
 
         [SetUp]
         public void SetUp()
@@ -41,9 +41,9 @@
             mockStartPage = new Mock<StartPage>();
             mockSiteSettingsPage = new Mock<SiteSettingsPage>();
 
-            mockEpiserverContentRepositories = new Mock<IEpiserverContentRepositories>();
-            mockEpiserverContentRepositories.Setup(x => x.StartPageRepository.StartPage).Returns(mockStartPage.Object);
-            mockEpiserverContentRepositories.Setup(x => x.SiteSettingsPageRepository.SiteSettingsPage).Returns(mockSiteSettingsPage.Object);
+            mockEpiserverContentRepositories = new Mock<IPageTypeServices>();
+            mockEpiserverContentRepositories.Setup(x => x.StartPageService.Homepage).Returns(mockStartPage.Object);
+            mockEpiserverContentRepositories.Setup(x => x.SiteSettingsService.SiteSettingsPage).Returns(mockSiteSettingsPage.Object);
         }
 
         [Test]
@@ -65,9 +65,9 @@
             IHeaderViewModelFactory headerViewModelFactory)
         {
             mockStartPage.Setup(x => x.PageName).Returns(pageName);
-            mockEpiserverContentRepositories.Setup(x => x.StartPageRepository.StartPage).Returns(mockStartPage.Object);
+            mockEpiserverContentRepositories.Setup(x => x.StartPageService.Homepage).Returns(mockStartPage.Object);
 
-            mockEpiserverContentRepositories.Setup(x => x.StartPageRepository.StartPage).Returns(mockStartPage.Object);
+            mockEpiserverContentRepositories.Setup(x => x.StartPageService.Homepage).Returns(mockStartPage.Object);
             layoutViewModelFactory = new LayoutViewModelFactory(dependencies, mockEpiserverContentRepositories.Object, headerViewModelFactory);
 
             var viewModel = layoutViewModelFactory.CreateLayoutViewModel(pageData);
@@ -76,7 +76,7 @@
 
 
         [Test, AutoMoqData]
-        public void A_Valid_Header_Data_Is_Created(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
+        public void A_Valid_Header_Data_Is_Created(IWebsiteDependencies _websiteDependencies, IPageTypeServices episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
         {
             layoutViewModelFactory = new LayoutViewModelFactory(_websiteDependencies, episerverContentRepositories, headerViewModelFactory);
 
@@ -85,7 +85,7 @@
         }
 
         [Test, AutoMoqData]
-        public void Valid_Footer_ViewModel_Is_Created(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
+        public void Valid_Footer_ViewModel_Is_Created(IWebsiteDependencies _websiteDependencies, IPageTypeServices episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
         {
             layoutViewModelFactory = new LayoutViewModelFactory(_websiteDependencies, episerverContentRepositories, headerViewModelFactory);
 
@@ -94,7 +94,7 @@
         }
 
         [Test, AutoMoqData]
-        public void Valid_Footer_Data_Is_Created(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
+        public void Valid_Footer_Data_Is_Created(IWebsiteDependencies _websiteDependencies, IPageTypeServices episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
         {
             layoutViewModelFactory = new LayoutViewModelFactory(_websiteDependencies, episerverContentRepositories, headerViewModelFactory);
 
@@ -103,7 +103,7 @@
         }
 
         [Test, AutoMoqData]
-        public void Valid_MetaDataProperties_Is_Created(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
+        public void Valid_MetaDataProperties_Is_Created(IWebsiteDependencies _websiteDependencies, IPageTypeServices episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
         {
             layoutViewModelFactory = new LayoutViewModelFactory(_websiteDependencies, episerverContentRepositories, headerViewModelFactory);
 
@@ -112,7 +112,7 @@
         }
 
         [Test, AutoMoqData]
-        public void Valid_MetaDataProperties_PageDataProperties_Is_Created(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
+        public void Valid_MetaDataProperties_PageDataProperties_Is_Created(IWebsiteDependencies _websiteDependencies, IPageTypeServices episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
         {
             layoutViewModelFactory = new LayoutViewModelFactory(_websiteDependencies, episerverContentRepositories, headerViewModelFactory);
 
@@ -123,7 +123,7 @@
         [Test, AutoMoqData]
         public void MetaDataProperties_PageDataProperties_SeoTitle_Data_Should_Be_Set_Correctly(
             IWebsiteDependencies _websiteDependencies,
-            IEpiserverContentRepositories episerverContentRepositories,
+            IPageTypeServices episerverContentRepositories,
             IHeaderViewModelFactory headerViewModelFactory,
             string seoTitle)
         {
@@ -135,7 +135,7 @@
         }
 
         [Test, AutoMoqData]
-        public void FooterDataProperties_PageDataProperties_SeoTitleData_Should_Be_Set_Correctly(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
+        public void FooterDataProperties_PageDataProperties_SeoTitleData_Should_Be_Set_Correctly(IWebsiteDependencies _websiteDependencies, IPageTypeServices episerverContentRepositories, IHeaderViewModelFactory headerViewModelFactory)
         {
             layoutViewModelFactory = new LayoutViewModelFactory(_websiteDependencies, episerverContentRepositories, headerViewModelFactory);
 

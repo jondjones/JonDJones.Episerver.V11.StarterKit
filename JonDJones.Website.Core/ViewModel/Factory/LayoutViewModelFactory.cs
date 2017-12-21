@@ -17,13 +17,13 @@
 
     public class LayoutViewModelFactory
     {
-        private readonly IEpiserverContentRepositories _episerverContentRepositories;
+        private readonly IPageTypeServices _episerverContentRepositories;
 
         private readonly IHeaderViewModelFactory _headerViewModelFactory;
 
         public LayoutViewModelFactory(
             IWebsiteDependencies websiteDependencies,
-            IEpiserverContentRepositories episerverContentRepositories,
+            IPageTypeServices episerverContentRepositories,
             IHeaderViewModelFactory headerViewModelFactory)
         {
             Guard.ValidateObject(websiteDependencies);
@@ -36,9 +36,9 @@
 
         public LayoutViewModel CreateLayoutViewModel(PageData currentPage)
         {
-            var homePage = _episerverContentRepositories.StartPageRepository.StartPage;
+            var homePage = _episerverContentRepositories.StartPageService.Homepage;
 
-            var siteSettingsPage = _episerverContentRepositories.SiteSettingsPageRepository.SiteSettingsPage;
+            var siteSettingsPage = _episerverContentRepositories.SiteSettingsService.SiteSettingsPage;
             var headerProperties = _headerViewModelFactory.CreateHeaderProperties(homePage, siteSettingsPage);
 
             var footerProperties = CreateFooterProperties(homePage);

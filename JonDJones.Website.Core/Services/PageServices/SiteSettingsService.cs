@@ -1,31 +1,31 @@
-﻿namespace JonDJones.Website.Core.Repository
+﻿using System.Collections.Generic;
+
+using EPiServer;
+using EPiServer.Core;
+using EPiServer.DataAccess;
+using EPiServer.Security;
+
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Core.Pages;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Shared.Helpers;
+
+namespace JonDJones.Website.Core.Repository
 {
-    using System;
-    using System.Collections.Generic;
-
-    using EPiServer;
-    using EPiServer.Core;
-    using EPiServer.DataAccess;
-    using EPiServer.Security;
-
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.Core.Pages;
-    using JonDJones.Website.Interfaces;
-    using JonDJones.Website.Shared.Helpers;
-
-    public class SiteSettingsPageRepository : ISiteSettingsPageRepository
+    public class SiteSettingsService : ISiteSettingsService
     {
         private readonly IContentRepository _contentRepository;
 
         private readonly IContextResolver _contextResolver;
 
-        private readonly IStartPageRepository _startPageRepository;
+        private readonly IStartPageService _startPageRepository;
 
-        public SiteSettingsPageRepository(IContentRepository contentRepository, IContextResolver contextResolver, IStartPageRepository startPageRepository)
+        public SiteSettingsService(IContentRepository contentRepository, IContextResolver contextResolver, IStartPageService startPageRepository)
         {
             Guard.ValidateObject(contentRepository);
             Guard.ValidateObject(contextResolver);
             Guard.ValidateObject(startPageRepository);
+
             _contentRepository = contentRepository;
             _contextResolver = contextResolver;
             _startPageRepository = startPageRepository;
@@ -35,9 +35,9 @@
         {
             get
             {
-                if (_startPageRepository.StartPage != null && !ContentReference.IsNullOrEmpty(_startPageRepository.StartPage.SiteSettingsPage))
+                if (_startPageRepository.Homepage != null && !ContentReference.IsNullOrEmpty(_startPageRepository.Homepage.SiteSettingsPage))
                 {
-                    return _contentRepository.Get<SiteSettingsPage>(_startPageRepository.StartPage.SiteSettingsPage);
+                    return _contentRepository.Get<SiteSettingsPage>(_startPageRepository.Homepage.SiteSettingsPage);
                 }
 
                 return null;

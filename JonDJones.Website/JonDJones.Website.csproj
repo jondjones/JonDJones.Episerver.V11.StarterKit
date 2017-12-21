@@ -384,7 +384,6 @@
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ItemGroup>
-    <Content Include="App_Data\GeoLiteCity.dat" />
     <Content Include="ClientResources\css\bootstrap.css" />
     <Content Include="ClientResources\css\bootstrap.min.css" />
     <Content Include="ClientResources\css\clean-blog.css" />

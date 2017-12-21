@@ -30,7 +30,7 @@
 
         private WebsiteDependencies _websiteDependencies;
 
-        private Mock<ISiteSettingsPageRepository> mockSiteSettingsPageRepository;
+        private Mock<ISiteSettingsService> mockSiteSettingsPageRepository;
 
         [SetUp]
         public void SetUp()
@@ -38,7 +38,7 @@
             mockContentRepository = new Mock<IContentRepository>();
             mockSiteSettingPage = new Mock<SiteSettingsPage>();
             mockContextResolver = new Mock<IContextResolver>();
-            mockSiteSettingsPageRepository = new Mock<ISiteSettingsPageRepository>();
+            mockSiteSettingsPageRepository = new Mock<ISiteSettingsService>();
         }
 
         [Test]

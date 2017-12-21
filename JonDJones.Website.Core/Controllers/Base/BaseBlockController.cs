@@ -17,11 +17,11 @@
     {
         private Injected<IWebsiteDependencies> websiteDependencies;
 
-        private Injected<IEpiserverContentRepositories> episerverRepositoryDependencies;
+        private Injected<IPageTypeServices> episerverRepositoryDependencies;
 
         public IWebsiteDependencies WebsiteDependencies => websiteDependencies.Service;
 
-        public IEpiserverContentRepositories EpiserverContentRepositories => episerverRepositoryDependencies.Service;
+        public IPageTypeServices EpiserverContentRepositories => episerverRepositoryDependencies.Service;
 
         public PageData CurrentPage => WebsiteDependencies.ContextResolver.CurrentPage;
 

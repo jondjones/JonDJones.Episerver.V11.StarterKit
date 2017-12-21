@@ -1,35 +1,42 @@
-﻿namespace JonDJones.Website.Core.Repository
+﻿using System;
+using System.Collections.Generic;
+
+using EPiServer;
+using EPiServer.Core;
+using EPiServer.DataAccess;
+using EPiServer.Security;
+
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Core.Pages;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Shared.Helpers;
+using JonDJones.Website.Core.ViewModel.Pages;
+
+namespace JonDJones.Website.Core.Repository
 {
-    using System;
-    using System.Collections.Generic;
-
-    using EPiServer;
-    using EPiServer.Core;
-    using EPiServer.DataAccess;
-    using EPiServer.Security;
-
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.Core.Pages;
-    using JonDJones.Website.Interfaces;
-    using JonDJones.Website.Shared.Helpers;
-
-    public class StartPageRepository : IStartPageRepository
+    public class StartPageService : IStartPageService
     {
         private readonly IContentRepository _contentRepository;
 
         private readonly IContextResolver _contextResolver;
 
-        public StartPageRepository(IContentRepository contentRepository, IContextResolver contextResolver)
+        public StartPageService(IContentRepository contentRepository, IContextResolver contextResolver)
         {
             Guard.ValidateObject(contentRepository);
             Guard.ValidateObject(contextResolver);
+
             _contentRepository = contentRepository;
             _contextResolver = contextResolver;
         }
 
-        public StartPage StartPage => ContentReference.IsNullOrEmpty(_contextResolver.StartPage)
+        public StartPage Homepage => ContentReference.IsNullOrEmpty(_contextResolver.StartPage)
                                           ? null
                                           : _contentRepository.Get<StartPage>(_contextResolver.StartPage);
+
+        public StartPageAdditionalProperties GetStartPageAdditionalProperties(StartPage startpage)
+        {
+            return new StartPageAdditionalProperties();
+        }
 
         public IEnumerable<StartPage> GetChildren(ContentReference parentPageReference)
         {

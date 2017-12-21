@@ -1,24 +1,24 @@
-﻿namespace JonDJones.Website.Core.Repository
+﻿using System.Collections.Generic;
+
+using EPiServer;
+using EPiServer.Core;
+using EPiServer.DataAccess;
+using EPiServer.Security;
+
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Core.Pages.MetaPages.KeyValue;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Shared.Helpers;
+
+namespace JonDJones.Website.Core.Repository
 {
-    using System.Collections.Generic;
-
-    using EPiServer;
-    using EPiServer.Core;
-    using EPiServer.DataAccess;
-    using EPiServer.Security;
-
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.Core.Pages.MetaPages.KeyValue;
-    using JonDJones.Website.Interfaces;
-    using JonDJones.Website.Shared.Helpers;
-
-    public class KeyValueRepository : IKeyValueRepository
+    public class KeyValueService : IKeyValueService
     {
         private readonly IContentRepository _contentRepository;
 
         private readonly IContextResolver _contextResolver;
 
-        public KeyValueRepository(IContentRepository contentRepository, IContextResolver contextResolver)
+        public KeyValueService(IContentRepository contentRepository, IContextResolver contextResolver)
         {
             Guard.ValidateObject(contentRepository);
             Guard.ValidateObject(contextResolver);

@@ -1,22 +1,25 @@
-﻿namespace JonDJones.Fixtures.Fixtures.Pages
+﻿using System.Linq;
+
+using EPiServer.Core;
+using EPiServer.DataAccess;
+using EPiServer.Security;
+
+using JonDJones.Fixtures.Entities;
+using JonDJones.Fixtures.Fixtures.Base;
+using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
+using JonDJones.Website.Core.Pages;
+using JonDJones.Website.Interfaces;
+using JonDJones.Website.Shared.Helpers;
+
+namespace JonDJones.Fixtures.Fixtures.Pages
 {
-    using System.Linq;
-
-    using EPiServer.Core;
-    using EPiServer.DataAccess;
-    using EPiServer.Security;
-
-    using JonDJones.Fixtures.Entities;
-    using JonDJones.Fixtures.Fixtures.Base;
-    using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
-    using JonDJones.Website.Core.Pages;
-    using JonDJones.Website.Interfaces;
-    using JonDJones.Website.Shared.Helpers;
-
     public class SettingsPageFixtures : FixturePageBase
     {
-        public SettingsPageFixtures(IWebsiteDependencies _websiteDependencies, IEpiserverContentRepositories episerverContentRepositories, IContent homepage)
-            : base(_websiteDependencies, episerverContentRepositories, homepage)
+        public SettingsPageFixtures(
+            IWebsiteDependencies websiteDependencies,
+            IPageTypeServices pageServices,
+            IContent homepage)
+            : base(websiteDependencies, pageServices, homepage)
         {
         }
 

@@ -30,7 +30,7 @@
 
         private Mock<SiteSettingsPage> mockSiteSettingsPage;
 
-        private Mock<IEpiserverContentRepositories> mockEpiserverContentRepositories;
+        private Mock<IPageTypeServices> mockEpiserverContentRepositories;
 
         [SetUp]
         public void SetUp()
@@ -38,15 +38,15 @@
             mockStartPage = new Mock<StartPage>();
             mockSiteSettingsPage = new Mock<SiteSettingsPage>();
 
-            mockEpiserverContentRepositories = new Mock<IEpiserverContentRepositories>();
-            mockEpiserverContentRepositories.Setup(x => x.StartPageRepository.StartPage).Returns(mockStartPage.Object);
-            mockEpiserverContentRepositories.Setup(x => x.SiteSettingsPageRepository.SiteSettingsPage)
+            mockEpiserverContentRepositories = new Mock<IPageTypeServices>();
+            mockEpiserverContentRepositories.Setup(x => x.StartPageService.Homepage).Returns(mockStartPage.Object);
+            mockEpiserverContentRepositories.Setup(x => x.SiteSettingsService.SiteSettingsPage)
                 .Returns(mockSiteSettingsPage.Object);
         }
 
         [Test, AutoMoqData]
         public void A_Valid_Header_ViewModel_Is_Created(
-            IMenuPageRepository menuPageRepository)
+            IMenuService menuPageRepository)
         {
             var headerViewModelFactory = new HeaderViewModelFactory(menuPageRepository);
 
@@ -58,7 +58,7 @@
 
         [Test, AutoMoqData]
         public void Header_SiteSettingsData_Should_Be_Set_Correctly(
-            IMenuPageRepository menuPageRepository)
+            IMenuService menuPageRepository)
         {
             var headerViewModelFactory = new HeaderViewModelFactory(menuPageRepository);
 
@@ -70,7 +70,7 @@
 
         [Test, AutoMoqData]
         public void Header_Data_Should_Be_Set_Correctly(
-            IMenuPageRepository menuPageRepository)
+            IMenuService menuPageRepository)
         {
             var headerViewModelFactory = new HeaderViewModelFactory(menuPageRepository);
 
@@ -82,7 +82,7 @@
 
         [Test, AutoMoqData]
         public void Header_MenuData_Should_Be_Set_Correctly(
-                    IMenuPageRepository menuPageRepository)
+                    IMenuService menuPageRepository)
         {
             var headerViewModelFactory = new HeaderViewModelFactory(menuPageRepository);
 
@@ -94,7 +94,7 @@
 
         [Test, AutoMoqData]
         public void Header_Menu_PrimaryNavigationData_Should_Be_Set_Correctly(
-                    IMenuPageRepository menuPageRepository)
+                    IMenuService menuPageRepository)
         {
             var headerViewModelFactory = new HeaderViewModelFactory(menuPageRepository);
             var navigationItems = new Mock<List<INavigationItem>>();

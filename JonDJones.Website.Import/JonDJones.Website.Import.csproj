@@ -118,6 +118,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Threading.Tasks.Dataflow, Version=4.5.24.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Tpl.Dataflow.4.5.24\lib\portable-net45+win8+wpa81\System.Threading.Tasks.Dataflow.dll</HintPath>
@@ -157,6 +158,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FixturesSetup.cs" />
+    <Compile Include="FixtureStartupModule.cs" />
+    <Compile Include="Import\DataImporter.cs" />
     <Compile Include="MetaDataFixturesInstaller.cs" />
     <Compile Include="Entities\MetadataContainerReferences.cs" />
     <Compile Include="Entities\StandardPageDetails.cs" />
@@ -166,7 +170,6 @@
     <Compile Include="Fixtures\EpiserverConfigurationSetup.cs" />
     <Compile Include="Fixtures\Factory\BlockFixturesFactory.cs" />
     <Compile Include="Fixtures\Factory\PagesFixturesFactory.cs" />
-    <Compile Include="FixturesInstaller.cs" />
     <Compile Include="Fixtures\Pages\KeyValuePageFixtures.cs" />
     <Compile Include="Fixtures\Pages\MenuPageFixtures.cs" />
     <Compile Include="Fixtures\Pages\ContainerPageFixtures.cs" />

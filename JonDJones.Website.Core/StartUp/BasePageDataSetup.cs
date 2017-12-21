@@ -14,7 +14,7 @@
     {
         internal Injected<IWebsiteDependencies> EpiServerDependencies { get; set; }
 
-        internal Injected<IEpiserverContentRepositories> EpiserverContentRepositories { get; set; }
+        internal Injected<IPageTypeServices> EpiserverContentRepositories { get; set; }
 
         internal Injected<IBlockHelper> BlockHelper { get; set; }
 
@@ -29,7 +29,7 @@
             }
 
             var dependencies = EpiServerDependencies.Service;
-            var menuPageRepository = new MenuPageRepository(dependencies);
+            var menuPageRepository = new MenuService(dependencies);
             var headerViewModelFactory = new HeaderViewModelFactory(menuPageRepository);
 
             var viewModel = new LayoutViewModelFactory(dependencies, EpiserverContentRepositories.Service, headerViewModelFactory);

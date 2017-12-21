@@ -10,6 +10,9 @@
     using JonDJones.Website.Core.Dependencies;
     using JonDJones.Website.Core.Dependencies.RepositoryDependencies.Interfaces;
     using JonDJones.Website.Interfaces.Enums;
+    using EPiServer.Shell.ObjectEditing;
+    using EPiServer.Core;
+    using JonDJones.Website.Core.EpiserverConfiguration;
 
     [InitializableModule]
     [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
@@ -17,7 +20,7 @@
     {
         internal Injected<WebsiteDependencies> WebsiteDependencies { get; set; }
 
-        internal Injected<IEpiserverContentRepositories> EpiserverContentRepositories { get; set; }
+        internal Injected<IPageTypeServices> EpiserverContentRepositories { get; set; }
 
         internal Injected<DisplayOptions> Options { get; set; }
 
@@ -27,6 +30,12 @@
 
             GlobalFilters.Filters.Add(ServiceLocator.Current.GetInstance<BasePageDataSetup>());
             SetDisplayOptions();
+
+            if (context.HostType == HostType.WebApplication)
+            {
+                var registry = context.Locate.Advanced.GetInstance<MetadataHandlerRegistry>();
+                registry.RegisterMetadataHandler(typeof(ContentData), new ContentCreateMetadataExtender());
+            }
         }
 
         public void Uninitialize(InitializationEngine context)
