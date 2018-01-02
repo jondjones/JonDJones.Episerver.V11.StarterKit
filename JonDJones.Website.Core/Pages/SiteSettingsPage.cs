@@ -7,6 +7,8 @@ using JonDJones.Website.Core.Pages.Base;
 using JonDJones.Website.Core.Validation.Attributes;
 using JonDJones.Website.Interfaces;
 using JonDJones.Website.Shared.Resources;
+using EPiServer.Web;
+using EPiServer.DataAbstraction;
 
 namespace JonDJones.Website.Core.Pages
 {
@@ -20,11 +22,13 @@ namespace JonDJones.Website.Core.Pages
     public class SiteSettingsPage : ContainerPage, ISiteSettingsProperties
     {
         [Display(
-            Name = "Search Page",
-            Description = "Sets up the search page",
-            GroupName = GlobalConstants.TabNames.PageReferences,
+            Name = "Logo",
+            Description = "Select A Logo",
+            GroupName = SystemTabNames.Content,
             Order = 100)]
-        [AllowedTypes(AllowedTypes = new[] { typeof(SearchPage) })]
-        public virtual PageReference SearchPage { get; set; }
+        [Required]
+        [CultureSpecific]
+        [UIHint(UIHint.Image)]
+        public virtual ContentReference Logo { get; set; }
     }
 }
